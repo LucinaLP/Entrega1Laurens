@@ -9,12 +9,16 @@
 <body>
     <h1>BIENVENIDOS A BD BAZAR & DESIGN</h1>
     <h3>Productos disponibles</h3>
-    {% for articulo in articulos %}
-        <p>{{ articulo.producto }}</p>
-        <p>{{ articulo.detalle }}</p>
-        <p>{{ articulo.cantidad }}</p>
-        <p>{{ articulo.color }}</p>
-        <p>{{ articulo.precio }}</p>
-    {% endfor %}
+    <ul class="list-group">
+        {% for articulo in articulos %}
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                {{ articulo.producto }}
+                {{ articulo.detalle }}
+                {{ articulo.cantidad }}
+                {{ articulo.color }}
+                {{ articulo.precio }}
+            </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

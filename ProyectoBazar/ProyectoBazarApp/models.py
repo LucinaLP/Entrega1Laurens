@@ -11,7 +11,7 @@ class Articulo(models.Model):
 
 class Nosotros(models.Model):
     direccion = models.CharField("Dirección", max_length=30)
-    telefono = PhoneNumber("Teléfono")
+    telefono = PhoneNumber()
     email = models.EmailField("Email")
     instagram = models.CharField("Instagram", max_length=30)
     

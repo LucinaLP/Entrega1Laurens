@@ -10,9 +10,9 @@ def index(request):
 def nosotros(request):
     info = Nosotros.objects.all()
     contexto = {'info': info}
-    return render(request,"ProyectoBazarApp/index.html")
+    return render(request,"ProyectoBazarApp/nosotros.html")
 
 def servicios(request):
     servicio = Servicios.objects.all()
     contexto = {'servicios': servicios}
-    return render(request,"ProyectoBazarApp/index.html")
+    return render(request,"ProyectoBazarApp/servicios.html")

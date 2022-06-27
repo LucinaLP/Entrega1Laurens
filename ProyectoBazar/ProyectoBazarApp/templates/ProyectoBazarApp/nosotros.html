@@ -23,9 +23,9 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="nosotros/">Nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="servicios/">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'servicios' %}">Servicios</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -60,25 +60,25 @@
             <div class="container">
                 <div class="row">
                   <div class="col-6 col-sm-4">DIRECCIÓN:</div>
-                  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                  <div class="col-6 col-sm-4">{{nosotros.direccion}}</div>
               
                   <!-- Force next columns to break to new line at md breakpoint and up -->
                   <div class="w-100 d-none d-md-block"></div>
               
-                  <div class="col-6 col-sm-4">TELÉFONO</div>
-                  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                  <div class="col-6 col-sm-4">TELÉFONO:</div>
+                  <div class="col-6 col-sm-4">{{nosotros.relefono}}</div>
 
                   <!-- Force next columns to break to new line at md breakpoint and up -->
                   <div class="w-100 d-none d-md-block"></div>
               
-                  <div class="col-6 col-sm-4">EMAIL</div>
-                  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                  <div class="col-6 col-sm-4">EMAIL:</div>
+                  <div class="col-6 col-sm-4">{{email}}</div>
                 
                   <!-- Force next columns to break to new line at md breakpoint and up -->
                   <div class="w-100 d-none d-md-block"></div>
               
-                  <div class="col-6 col-sm-4">INSTAGRAM</div>
-                  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                  <div class="col-6 col-sm-4">INSTAGRAM:</div>
+                  <div class="col-6 col-sm-4">{{instagram}}</div>
                 </div>
               </div>
         </section>

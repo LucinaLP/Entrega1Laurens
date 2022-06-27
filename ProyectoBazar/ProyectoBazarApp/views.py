@@ -2,10 +2,14 @@ from django.shortcuts import render
 from .models import *
 
 
-def index(request):
+def inicio(request):
     articulos = Articulo.objects.all()
     contexto = {'articulos': articulos}
     return render(request,"ProyectoBazarApp/index.html",contexto)
+
+def base(request):
+    
+    return render(request,"ProyectoBazarApp/base.html",{})
 
 def nosotros(request):
     info = Nosotros.objects.all()

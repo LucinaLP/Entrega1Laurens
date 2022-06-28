@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import *
 
 
@@ -7,9 +7,20 @@ def inicio(request):
     contexto = {'articulos': articulos}
     return render(request,"ProyectoBazarApp/index.html",contexto)
 
-def crear_articulo(request):
+def crear_articulo(request):    
     
-    return render(request,"ProyectoBazarApp/formulario_articulo.html",{})
+    if request.method == "POST":
+        
+        info_formulario = request.POST
+        
+        articulo = Articulo(producto=info_formulario["producto"], cantidad=int(info_formulario["cantidad"]), precio=float(info_formulario["precio"]))
+        
+        articulo.save()
+        
+        return redirect("inicio")
+        
+    else:
+        return render(request,"ProyectoBazarApp/formulario_articulo.html",{})
 
 def base(request):
     

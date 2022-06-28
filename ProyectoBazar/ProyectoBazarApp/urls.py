@@ -8,5 +8,4 @@ urlpatterns = [
     
     path('nosotros/',nosotros,name="nosotros"),
     path('servicios/',servicios,name="servicios"),
-    #path('base/',base),
-]
+    ]

@@ -8,8 +8,8 @@ class ArticuloAdmin(admin.ModelAdmin):
 admin.site.register(Articulo, ArticuloAdmin)
 
 class NosotrosAdmin(admin.ModelAdmin):
-    list_display = ('direccion', 'telefono', 'email', 'instagram')
-
+    list_display = ('direccion', 'email', 'instagram')
+    
 admin.site.register(Nosotros, NosotrosAdmin)
 
 class ServiciosAdmin(admin.ModelAdmin):

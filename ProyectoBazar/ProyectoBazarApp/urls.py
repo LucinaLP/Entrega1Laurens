@@ -8,4 +8,5 @@ urlpatterns = [
     
     path('nosotros/',nosotros,name="nosotros"),
     path('servicios/',servicios,name="servicios"),
+    path('crear_articulo/',crear_articulo,name="crear_articulo"),
     ]

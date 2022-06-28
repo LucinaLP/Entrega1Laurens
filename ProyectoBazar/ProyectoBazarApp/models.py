@@ -15,6 +15,13 @@ class Nosotros(models.Model):
     email = models.EmailField("Email")
     instagram = models.CharField("Instagram", max_length=30)
     
+    
+    class Meta:
+        verbose_name_plural = "Nosotros"
+    
 class Servicios(models.Model):
     nombre = models.CharField("Servicio",max_length=30)
+    
+    class Meta:
+        verbose_name_plural = "Servicios"
         

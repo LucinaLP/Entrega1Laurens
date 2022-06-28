@@ -7,6 +7,10 @@ def inicio(request):
     contexto = {'articulos': articulos}
     return render(request,"ProyectoBazarApp/index.html",contexto)
 
+def crear_articulo(request):
+    
+    return render(request,"ProyectoBazarApp/formulario_articulo.html",{})
+
 def base(request):
     
     return render(request,"ProyectoBazarApp/base.html",{})

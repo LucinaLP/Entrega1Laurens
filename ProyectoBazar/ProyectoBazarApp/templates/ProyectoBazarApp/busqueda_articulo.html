@@ -6,15 +6,14 @@ Buscar Artículo - BD Bazar & Design
 {%endblock%}
 
 {% block contenidoPagina%}
-<p>Buscar Artículo: 
-    <form action="" method="post">
-        {% csrf_token %}
+<form action="" method="post">
+    {% csrf_token %}
 
-        <input type="text" name="producto" id="">
-        
-        <input type="submit" value="Buscar">
-    </form> 
-</p>
+    <input type="text" name="producto" id="">
+                                           
+    <input type="submit" value="Buscar">
+    
+</form>
 
 <p>Resultados: </p>
 <ul>

@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import *
+from .forms import NuevoArticulo
 
 
 def inicio(request):
@@ -11,16 +12,27 @@ def crear_articulo(request):
     
     if request.method == "POST":
         
-        info_formulario = request.POST
+        formulario = NuevoArticulo(request.POST)
         
-        articulo = Articulo(producto=info_formulario["producto"], cantidad=int(info_formulario["cantidad"]), precio=float(info_formulario["precio"]))
+        if formulario.is_valid():
+            
+            info_articulo = formulario.cleaned_data    
         
-        articulo.save()
+            articulo = Articulo(producto=info_articulo["producto"], cantidad=int(info_articulo["cantidad"]), precio=float(info_articulo["precio"]))
         
-        return redirect("inicio")
+            articulo.save()
+        
+            return redirect("inicio")
+        
+        else:
+        
+            return render(request,"ProyectoBazarApp/formulario_articulo.html",{"form":formularioVacio})
         
     else:
-        return render(request,"ProyectoBazarApp/formulario_articulo.html",{})
+        
+        formularioVacio = NuevoArticulo()
+        
+        return render(request,"ProyectoBazarApp/formulario_articulo.html",{"form":formularioVacio})
 
 def base(request):
     

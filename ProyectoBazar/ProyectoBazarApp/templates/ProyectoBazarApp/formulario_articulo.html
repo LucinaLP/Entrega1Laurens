@@ -10,9 +10,11 @@ Crear Curso - BD Bazar & Design
 <form action="" method="post">
     {% csrf_token %}
 
-    <p>Artículo: <input type="text" name="producto" id=""></p>
+    <!-- <p>Artículo: <input type="text" name="producto" id=""></p>
     <p>Cantidad: <input type="number" name="cantidad" id="" min="0"></p>
-    <p>Precio: <input type="number" name="precio" id=""></p>
+    <p>Precio: <input type="number" name="precio" id=""></p> -->
+
+    {{ form.as_p }}
     
     <input type="submit" value="Agregar Artículo">
 </form>

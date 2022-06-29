@@ -36,9 +36,19 @@ def crear_articulo(request):
     
 def buscar_articulo(request):
     
-    articulos = []
+    if request.method == "POST":
+        
+        articulo = request.POST["producto"]
+        
+        articulos = Articulo.objects.filter(producto__icontains=articulo)
+        
+        return render(request,"ProyectoBazarApp/busqueda_articulo.html",{"articulos":articulos})
     
-    return render(request,"ProyectoBazarApp/busqueda_articulo.html",{"articulos":articulos})
+    else:        
+    
+        articulos = []
+        
+        return render(request,"ProyectoBazarApp/busqueda_articulo.html",{"articulos":articulos})
 
 def base(request):
     

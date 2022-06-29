@@ -15,4 +15,12 @@ Buscar Artículo - BD Bazar & Design
         <input type="submit" value="Buscar">
     </form> 
 </p>
+
+<p>Resultados: </p>
+<ul>
+    {% for articulo in articulos %}
+        <li>{{articulo.cantidad}} {{articulo.producto}} ${{articulo.precio}}</li>
+
+    {% endfor %}
+</ul>
 {% endblock %}

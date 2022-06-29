@@ -33,6 +33,12 @@ def crear_articulo(request):
         formularioVacio = NuevoArticulo()
         
         return render(request,"ProyectoBazarApp/formulario_articulo.html",{"form":formularioVacio})
+    
+def buscar_articulo(request):
+    
+    articulos = []
+    
+    return render(request,"ProyectoBazarApp/busqueda_articulo.html",{"articulos":articulos})
 
 def base(request):
     

@@ -68,6 +68,10 @@ def register_request(request):
     
     return render(request, "ProyectoBazarApp/register.html", {"form": form})
 
+def logout_request(request):
+    logout(request)
+    return redirect("inicio")
+
 def crear_articulo(request):    
     
     if request.method == "POST":

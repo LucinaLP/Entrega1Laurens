@@ -37,16 +37,16 @@
 
                   {% if user.is_authenticated %}
                   <li class="nav-item">
-                    <p class="text-primary my-2 mx-2"><i class="bi bi-person-circle"></i> Hola, <b>{{user.username}}</b>!</p></li>
+                    <p class="text-dark my-2 mx-2"><i class="bi bi-person-circle"></i> Hola, <b>{{user.username}}</b>!</p></li>
                     <li class="nav-item">
-                      <a class="btn btn-primary" aria-current="page" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                      <a class="btn btn-outline-dark" aria-current="page" href="{% url 'logout' %}">Cerrar Sesión</a></li>
                   </li>
                   {% else %}
                   <li class="nav-item">
-                    <a class="btn btn-primary mx-2" aria-current="page" href="{% url 'login' %}">Iniciar Sesión</a></li>
+                    <a class="btn btn-outline-dark mx-2" aria-current="page" href="{% url 'login' %}">Iniciar Sesión</a></li>
                   </li>
                   <li class="nav-item">
-                    <a class="btn btn-outline-primary" aria-current="page" href="{% url 'register' %}">Registrarse</a></li>
+                    <a class="btn btn-outline-dark" aria-current="page" href="{% url 'register' %}">Registrarse</a></li>
                   </li>
                   {% endif %}  
                   <li class="nav-item">
@@ -55,7 +55,7 @@
                   
                       <input class= "mx-2" type="text" name="producto" id="">
                                                              
-                      <a class="btn btn-primary mx-2" aria-current="page" href="{% url 'buscar_articulo' %}"><i class="bi bi-search-heart"></i>Buscar</a>
+                      <a class="btn btn-dark mx-2" aria-current="page" href="{% url 'buscar_articulo' %}"><i class="bi bi-search-heart"></i>Buscar</a>
                       
                   </form>                    
                   </li>

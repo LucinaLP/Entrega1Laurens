@@ -18,6 +18,27 @@ Inicio - BD Bazar & Design
         </header>
         <!-- Section-->
         <h3>Nuestros productos:</h3>
+        {% if user.is_authenticated %}
+            {% if user.is_staff %}
+            <form class="d-flex">
+                <button class="btn btn-outline-dark" type="submit">
+                    <a href="{% url 'crear_articulo' %}"><i class="bi bi-plus-circle-fill"></i>Agregar Artículo</a>                                
+                </button>
+            </form>
+            <br>
+            <form class="d-flex">
+                <button class="btn btn-outline-dark" type="submit">
+                    <a href=""><i class="bi bi-cloud-minus-fill"></i>Eliminar Artículo</a>                                
+                </button>
+            </form>
+            <br>
+            <form class="d-flex">
+                <button class="btn btn-outline-dark" type="submit">
+                    <a href=""><i class="bi bi-pencil-square"></i>Modificar Artículo</a>                                
+                </button>
+            </form>
+            {% endif %}
+        {% endif %}
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">                    

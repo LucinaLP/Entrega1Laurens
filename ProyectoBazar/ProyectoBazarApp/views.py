@@ -4,6 +4,8 @@ from .forms import *
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 def inicio(request):
@@ -72,6 +74,7 @@ def logout_request(request):
     logout(request)
     return redirect("inicio")
 
+@login_required
 def crear_articulo(request):    
     
     if request.method == "POST":

@@ -6,11 +6,12 @@ Nosotros - BD Bazar & Design
 {%endblock%}
 
 {% block contenidoPagina%}
-        <section class="bg-light py-5">
-            <h1>Podés encontrarnos en:</h1>            
+        <section class="bg-light py-5">                       
             <div class="container">                
                 <div class="row">
-                    {% for nosotros in info %}                    
+                    {% for nosotros in info %}
+                        <h1>Hola! Soy Lucina</h1>
+                        <h3>Podés encontrarnos en:</h3> 
                         <div class="col-6 col-sm-4">DIRECCIÓN:</div>                                
                         <div class="col-6 col-sm-4">{{nosotros.direccion}}</div>                                        
                     

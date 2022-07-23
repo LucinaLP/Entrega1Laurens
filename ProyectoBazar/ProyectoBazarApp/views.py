@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import *
 from .forms import *
@@ -74,6 +75,29 @@ def register_request(request):
 def logout_request(request):
     logout(request)
     return redirect("inicio")
+
+@login_required
+def editar_perfil(request):    
+    user = request.user
+    
+    if request.method == "POST":
+        form = UserEditForm(request.POST)
+        
+        if form.is_valid():
+            
+            info = form.cleaned_data
+            user.email = info["email"]
+            user.first_name = info["first_name"]
+            user.last_name = info["last_name"]
+                        
+            user.save()
+            
+            return redirect("inicio")
+                    
+    else:
+        form = UserEditForm(initial={'email': user.email, "first_name": user.first_name, "last_name": user.last_name})
+    
+    return render(request,"ProyectoBazarApp/editar_perfil.html",{"form":form})
 
 @login_required
 @staff_member_required

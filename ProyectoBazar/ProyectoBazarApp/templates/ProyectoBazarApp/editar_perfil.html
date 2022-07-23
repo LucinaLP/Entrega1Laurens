@@ -1,0 +1,23 @@
+{% extends 'ProyectoBazarApp/base.html'%}
+{% load static %}
+
+{% block tituloPagina%} 
+Editar Perfil - BD Bazar & Design
+{%endblock%}
+
+{% block contenidoPagina%}
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <h1>Editar Perfil</h1> 
+        
+        <h5>Estás editando al usuario "{{user.username}}":</h5>
+        <br>
+    </div>
+          <form action="" method="post">
+              {% csrf_token %}
+              {{form.as_p}}
+              <button type="submit">Guardar</button>
+          </form>
+</section>
+
+{% endblock %}

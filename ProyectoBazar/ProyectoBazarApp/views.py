@@ -119,7 +119,7 @@ def agregar_avatar(request):
         
         if form.is_valid():
             
-            user = request.user
+            user = User.objects.get(username=request.user.username)
             
             avatar = Avatar(usuario=user, imagen=form.cleaned_data["imagen"])
             
@@ -130,7 +130,7 @@ def agregar_avatar(request):
             # avatar.imagen = form.cleaned_data["imagen"]
             # avatar.save()
             
-            return("inicio")
+            return redirect("inicio")
         
     else:
         form = AvatarForm()

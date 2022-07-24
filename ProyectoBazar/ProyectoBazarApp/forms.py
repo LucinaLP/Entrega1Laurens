@@ -22,6 +22,9 @@ class NosotrosFormulario(forms.Form):
     instagram = forms.CharField(max_length=30, label= "Instagram")
     
 class UserRegisterForm(UserCreationForm):
+    
+    foto = forms.ImageField(label= "Foto", required=False)
+    
     email = forms.EmailField(label="Email")
     password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Confirmar contraseña", widget=forms.PasswordInput)

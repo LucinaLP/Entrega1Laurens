@@ -48,17 +48,7 @@
                   <li class="nav-item">
                     <a class="btn btn-outline-dark" aria-current="page" href="{% url 'register' %}">Registrarse</a></li>
                   </li>
-                  {% endif %}  
-                  <li class="nav-item">
-                    <form action="" method="post">
-                      {% csrf_token %}
-                  
-                      <input class= "mx-2" type="text" name="producto" id="">
-                                                             
-                      <a class="btn btn-dark mx-2" aria-current="page" href="{% url 'buscar_articulo' %}"><i class="bi bi-search-heart"></i>Buscar</a>
-                      
-                  </form>                    
-                  </li>
+                  {% endif %}                  
                 </ul>                
                                 
                 <form class="d-flex">

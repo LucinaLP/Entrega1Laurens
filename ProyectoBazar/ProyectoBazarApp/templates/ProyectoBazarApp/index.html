@@ -16,29 +16,7 @@ Inicio - BD Bazar & Design
                 </div>
             </div>
         </header>
-        <!-- Section-->
-        <!-- <h3>Nuestros productos:</h3>
-        {% if user.is_authenticated %}
-            {% if user.is_staff %}
-            <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
-                    <a href="{% url 'crear_articulo' %}"><i class="bi bi-plus-circle-fill"></i>Agregar Artículo</a>                                
-                </button>
-            </form>
-            <br>
-            <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
-                    <a href=""><i class="bi bi-cloud-minus-fill"></i>Eliminar Artículo</a>                                
-                </button>
-            </form>
-            <br>
-            <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
-                    <a href=""><i class="bi bi-pencil-square"></i>Modificar Artículo</a>                                
-                </button>
-            </form>
-            {% endif %}
-        {% endif %} -->
+        <!-- End Header-->
         <section class="bg-light py-5">
             <div class="container px-5">
                 <h1>Nuestros productos:</h1>
@@ -47,7 +25,7 @@ Inicio - BD Bazar & Design
                     <div class="col-lg-12">
                         <form class="d-flex my-2 my-lg-0" action="" method="post">
                             {% csrf_token %}
-                            <input class="flex-grow-0 form-control mr-sm-2" type="search" name="search" placeholder="Buscar Artículo" aria-label="Search">
+                            <input class="flex-grow-0 form-control mr-sm-2" type="search" name="search" placeholder="Buscar Artículo" aria-label="Search">                            
                             <button class="btn btn-outline-dark text-nowrap ms-3 my-2 my-sm-0" type="submit"> <i class="bi bi-search-heart"></i> Buscar</button>
                             {% if user.is_authenticated %}
                                 {% if user.is_staff %}
@@ -72,23 +50,24 @@ Inicio - BD Bazar & Design
                     <thead>
                         <tr>                        
                             <th scope="col">Artículo</th>
+                            <th scope="col">Cantidad</th>
                             <th scope="col">Color</th>
                             <th scope="col">precio</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        
+                    <tbody>                        
                         {% for articulo in articulos %}
                             <tr>                                
                                 <td>{{articulo.producto}}</td>
+                                <td>{{articulo.cantidad}}</td>
                                 <td>{{articulo.color}}</td>
                                 <td>{{articulo.precio}}</td>
                                 <td>
                                     {% if user.is_authenticated %}
                                         {% if user.is_staff %}
-                                            <a href="" class="btn btn-outline-dark"> <i class="bi bi-pencil-square"></i> Editar</a>
-                                            <a href="" class="btn btn-outline-dark"> <i class="bi bi-cloud-minus-fill"></i> Eliminar</a>
+                                            <a href="{% url 'editar_articulo' articulo.id %}" class="btn btn-outline-dark"> <i class="bi bi-pencil-square"></i> Editar</a>
+                                            <a href="{% url 'eliminar_articulo' articulo.id %}" class="btn btn-outline-dark"> <i class="bi bi-cloud-minus-fill"></i> Eliminar</a>
                                         {% endif %}
                                     {% endif %}
                                     <a href="" class="btn btn-outline-dark"><i class="bi-cart-fill me-1"></i> Agregar al Carrito</a>
@@ -99,36 +78,7 @@ Inicio - BD Bazar & Design
                 </table>
             </div>
         </div>
-
-        <!-- <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">                    
-                    <div class="col mb-5">                        
-                        <div class="card h-100"></div>                        
-                            {% for articulo in articulos %}                                 -->
-                                    <!-- Product image -->
-                            <!-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /> -->
-                            <!-- Product details-->
-                            <!-- <div class="card-body p-4">
-                                <div class="text-center"> -->
-                                    <!-- Product name-->
-                                    <!-- <h5 class="fw-bolder">{{articulo.producto}}</h5> -->
-                                    <!-- Product color-->
-                                    <!-- {{articulo.color}} -->
-                                    <!-- Product price-->
-                                    <!-- ${{articulo.precio}}
-                                </div>
-                            </div>
-                            {% endfor %} -->
-                            <!-- Product actions-->
-                            <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir al carrito</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">                                   
-        </section> -->
+        </section>        
 {% endblock %}              
                            
                        

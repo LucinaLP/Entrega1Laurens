@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import *
 from .forms import *
+from django.db.models import Q
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
@@ -23,7 +24,7 @@ def inicio(request):
             
         return render(request,"ProyectoBazarApp/index.html",{"url":url,"articulos":articulos})
         
-    return render(request,"ProyectoBazarApp/index.html",contexto)
+    return render(request,"ProyectoBazarApp/index.html",contexto)        
 
 def login_request(request):
     
@@ -163,22 +164,56 @@ def crear_articulo(request):
         formularioVacio = NuevoArticulo()
         
         return render(request,"ProyectoBazarApp/formulario_articulo.html",{"form":formularioVacio})
+
+@login_required
+@staff_member_required
+def eliminar_articulo(request,articulo_id):
+    
+    articulo = Articulo.objects.get(id=articulo_id)
+    articulo.delete()
+    
+    return redirect("inicio")
+
+@login_required
+@staff_member_required
+def editar_articulo(request,articulo_id):
+    
+    articulo = Articulo.objects.get(id=articulo_id)
+    
+    if request.method == "POST":
+        
+        formulario = NuevoArticulo(request.POST)
+        
+        if formulario.is_valid():
+            
+            info_articulo = formulario.cleaned_data
+            
+            articulo.producto = info_articulo["producto"]
+            articulo.cantidad = int(info_articulo["cantidad"])
+            articulo.color = info_articulo["color"]
+            articulo.precio = float(info_articulo["precio"])
+            articulo.save()
+            
+            return redirect("inicio")
+    
+    formulario = NuevoArticulo(initial={"producto": articulo.producto, "cantidad": articulo.cantidad,"color": articulo.color, "precio": articulo.precio})
+    
+    return render(request,"ProyectoBazarApp/formulario_articulo.html",{"form":formulario})
     
 def buscar_articulo(request):
     
     if request.method == "POST":
         
-        articulo = request.POST["producto"]
+        search = request.POST["search"]
         
-        articulos = Articulo.objects.filter(producto__icontains=articulo)
+        if search !="":
+            articulos = Articulo.objects.filter(Q(producto__icontains=search)).values()
+            
+            return render (request, "ProyectoBazarApp/index.html", {"articulos":articulos, "search": True, "busqueda":search})
         
-        return render(request,"ProyectoBazarApp/busqueda_articulo.html",{"articulos":articulos})
+    articulos = Articulo.objects.all()
     
-    else:        
-    
-        articulos = []
-        
-        return render(request,"ProyectoBazarApp/busqueda_articulo.html",{"articulos":articulos})
+    return render(request,"ProyectoBazarApp/index.html",{"articulos":articulos})
 
 def base(request):
     
@@ -193,3 +228,34 @@ def servicios(request):
     servicios = Servicios.objects.all()
     contexto = {'servicios': servicios}
     return render(request,"ProyectoBazarApp/servicios.html",contexto)
+
+@login_required
+@staff_member_required
+def crear_servicio(request):
+    
+    if request.method == "POST":
+        
+        formulario = ServiciosFormulario(request.POST)
+        
+        if formulario.is_valid():
+            
+            info = formulario.cleaned_data
+            
+            servicio = Servicios(nombre=info["nombre"])
+            servicio.save()
+            
+            return redirect("servicios")
+        
+        return render(request,"ProyectoBazarApp/formulario_servicios.html",{"form":formulario})
+    
+    formulario = ServiciosFormulario()
+    return render(request,"ProyectoBazarApp/formulario_servicios.html",{"form":formulario})
+
+@login_required
+@staff_member_required
+def eliminar_servicio(request,servicio_id):
+    
+    servicio = Servicios.objects.get(id=servicio_id)
+    servicio.delete()
+    
+    return redirect("servicios")

@@ -4,8 +4,9 @@ Landing page de ecommerce para compra de productos
 Version 1.0
 
 Comandos a utilizar
-Instalar django
-python -m pip install django
+Superusuario para prueba Lucina contraseña: admin
+Usuario staff Diego contraseña: admin2admin
+Para buscar un artículo hay que ir a la url "proyectobazarapp/buscar_articulo/" (Desde el inicio no logré hacer que funcionara)
 
 Aplicar cambios en base de datos
 python manage.py makemigrations

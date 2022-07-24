@@ -1,5 +1,4 @@
 from django.db import models
-from phonenumbers import PhoneNumber
 from django.contrib.auth.models import User
 
 class Avatar(models.Model):
@@ -18,7 +17,6 @@ class Articulo(models.Model):
 
 class Nosotros(models.Model):
     direccion = models.CharField("Dirección", max_length=30)
-    telefono = PhoneNumber()
     email = models.EmailField("Email")
     instagram = models.CharField("Instagram", max_length=30)
     

@@ -10,7 +10,16 @@ class NuevoArticulo(forms.Form):
     
     producto = forms.CharField(max_length=30, label= "Producto")
     cantidad = forms.IntegerField(min_value=0, label= "Cantidad")
+    color = forms.CharField(max_length=15, label= "Color")
     precio = forms.FloatField(min_value=0, label= "Precio")
+
+class ServiciosFormulario(forms.Form):
+    nombre = forms.CharField(max_length=30, label= "Servicio")
+    
+class NosotrosFormulario(forms.Form):
+    direccion = forms.CharField(max_length=30, label= "Dirección")
+    email = forms.EmailField(label= "Email")
+    instagram = forms.CharField(max_length=30, label= "Instagram")
     
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(label="Email")

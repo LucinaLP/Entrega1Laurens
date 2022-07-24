@@ -16,3 +16,5 @@ class ServiciosAdmin(admin.ModelAdmin):
     list_display = ('nombre',)
 
 admin.site.register(Servicios, ServiciosAdmin)
+
+admin.site.register(Avatar)

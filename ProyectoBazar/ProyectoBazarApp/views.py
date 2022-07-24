@@ -13,6 +13,16 @@ from django.contrib.admin.views.decorators import staff_member_required
 def inicio(request):
     articulos = Articulo.objects.all()
     contexto = {'articulos': articulos}
+    
+    if request.user.is_authenticated:
+        try:
+            avatar = Avatar.objects.get(usuario=request.user)
+            url = avatar.imagen.url
+        except:
+            url = "/media/avatar/generica.jpg"
+            
+        return render(request,"ProyectoBazarApp/index.html",{"url":url,"articulos":articulos})
+        
     return render(request,"ProyectoBazarApp/index.html",contexto)
 
 def login_request(request):
@@ -98,6 +108,33 @@ def editar_perfil(request):
         form = UserEditForm(initial={'email': user.email, "first_name": user.first_name, "last_name": user.last_name})
     
     return render(request,"ProyectoBazarApp/editar_perfil.html",{"form":form})
+
+@login_required
+def agregar_avatar(request):
+    
+    if request.method == "POST":
+        
+        form = AvatarForm(request.POST, request.FILES)
+        
+        if form.is_valid():
+            
+            user = request.user
+            
+            avatar = Avatar(usuario=user, imagen=form.cleaned_data["imagen"])
+            
+            avatar.save()
+            
+            # avatar = Avatar()
+            # avatar.usuario = request.user
+            # avatar.imagen = form.cleaned_data["imagen"]
+            # avatar.save()
+            
+            return("inicio")
+        
+    else:
+        form = AvatarForm()
+        
+    return render(request,"ProyectoBazarApp/agregar_avatar.html",{"form":form})
 
 @login_required
 @staff_member_required

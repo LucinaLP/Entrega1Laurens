@@ -1,5 +1,12 @@
 from django.db import models
 from phonenumbers import PhoneNumber
+from django.contrib.auth.models import User
+
+class Avatar(models.Model):
+    
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    
+    imagen = models.ImageField(upload_to='avatar/', blank=True, null=True)
 
 
 class Articulo(models.Model):      

@@ -17,7 +17,11 @@ Servicios - BD Bazar & Design
                                     {% if user.is_staff %}                                                                            
                                         <li class="list-group-item d-flex justify-content-between align-items-start">
                                             {{servicio.nombre}}<a href="{% url 'eliminar_servicio' servicio.id %}" class="btn btn-outline-dark"> <i class="bi bi-cloud-minus-fill"></i> Eliminar</a> 
-                                        </li>                                                                
+                                        </li>
+                                    {% else %}
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            {{servicio.nombre}}
+                                        </li>                                                                                                   
                                     {% endif %}
                                 {% else %}
                                     <li class="list-group-item d-flex justify-content-between align-items-start">

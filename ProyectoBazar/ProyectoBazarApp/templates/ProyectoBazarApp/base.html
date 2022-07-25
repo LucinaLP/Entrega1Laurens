@@ -36,18 +36,17 @@
                   </li>
 
                   {% if user.is_authenticated %}
-                  <li class="nav-item">                                        
-                    <p class="text-dark my-2 mx-2"><img class="rounded" src="{{url}}" alt="" srcset="" style="height:30px;">Hola, <b>{{user.username}}</b>!</p></li>
-                    <li class="nav-item">
-                      <a class="btn btn-outline-dark" aria-current="page" href="{% url 'logout' %}">Cerrar Sesión</a></li>
-                  </li>
+                    {% if user.avatar.imagen.url %}
+                      <img class="rounded" src="{{ user.avatar.imagen.url }}" alt="" srcset="" style="height: 40px;">
+                    {% else %}
+                    <i class="bi bi-person-circle text-light my-2"></i>
+                    {% endif %}
+                      <li class="nav-item"><p class="text-dark my-2 mx-2"> Hola, <b>{{user.username}}</b>!</p></li>
+                      <li class="nav-item"><a class="btn btn-outline-dark" aria-current="page" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                      </li>
                   {% else %}
-                  <li class="nav-item">
-                    <a class="btn btn-outline-dark mx-2" aria-current="page" href="{% url 'login' %}">Iniciar Sesión</a></li>
-                  </li>
-                  <li class="nav-item">
-                    <a class="btn btn-outline-dark" aria-current="page" href="{% url 'register' %}">Registrarse</a></li>
-                  </li>
+                  <li class="nav-item"><a class="btn btn-outline-dark mx-2" aria-current="page" href="{% url 'login' %}">Iniciar Sesión</a></li>
+                  <li class="nav-item"><a class="btn btn-outline-dark" aria-current="page" href="{% url 'register' %}">Registrarse</a></li>
                   {% endif %}                  
                 </ul>                
                                 
